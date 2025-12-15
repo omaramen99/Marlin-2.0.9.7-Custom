@@ -75,6 +75,7 @@
  */
 
 // Show the Marlin bootscreen on startup. ** ENABLE FOR PRODUCTION **
+//SETTING
 #define SHOW_BOOTSCREEN
 
 // Show the bitmap in Marlin/_Bootscreen.h on startup.
@@ -164,9 +165,9 @@
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'L6470', 'L6474', 'POWERSTEP01', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
 //SETTING
-#define X_DRIVER_TYPE  A4988
-#define Y_DRIVER_TYPE  A4988
-#define Z_DRIVER_TYPE  A4988
+#define X_DRIVER_TYPE  DRV8825
+#define Y_DRIVER_TYPE  DRV8825
+#define Z_DRIVER_TYPE  DRV8825
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
 //#define Z2_DRIVER_TYPE A4988
@@ -175,7 +176,7 @@
 //#define I_DRIVER_TYPE  A4988
 //#define J_DRIVER_TYPE  A4988
 //#define K_DRIVER_TYPE  A4988
-#define E0_DRIVER_TYPE A4988
+#define E0_DRIVER_TYPE DRV8825
 //#define E1_DRIVER_TYPE A4988
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
@@ -698,6 +699,7 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
+//SETTING
 //#define PIDTEMPBED
 
 //#define BED_LIMIT_SWITCHING
@@ -827,6 +829,7 @@
 
 // Enable one of the options below for CoreXY, CoreXZ, or CoreYZ kinematics,
 // either in the usual order or reversed
+//SETTING
 //#define COREXY
 //#define COREXZ
 //#define COREYZ
@@ -1101,6 +1104,9 @@
 //BELT =>
 //LEAD => 
 //GEAR => 
+//80 => 1/16
+//160 => 1/32
+//...
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 90 }
 
 /**
@@ -1204,9 +1210,11 @@
  * The probe replaces the Z-MIN endstop and is used for Z homing.
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
+//SETTING
 #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
+//SETTING
 //#define USE_PROBE_FOR_Z_HOMING
 
 /**
@@ -1261,6 +1269,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
+//SETTING
 //#define BLTOUCH
 
 /**
@@ -1392,6 +1401,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
+//SETTING
 #define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }
 
 // Most probes should stay away from the edges of the bed, but
@@ -1452,6 +1462,7 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
+//SETTING
 //#define MULTIPLE_PROBING 2
 //#define EXTRA_PROBING    1
 
@@ -1660,6 +1671,7 @@
  * RAMPS-based boards use SERVO3_PIN for the first runout sensor.
  * For other boards you may need to define FIL_RUNOUT_PIN, FIL_RUNOUT2_PIN, etc.
  */
+//SETTING
 //#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
@@ -1760,9 +1772,10 @@
  *   leveling in steps so you can manually adjust the Z height at each grid-point.
  *   With an LCD controller the process is guided step-by-step.
  */
+//SETTING
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-//#define AUTO_BED_LEVELING_BILINEAR
+//#define AUTO_BED_LEVELING_BILINEAR //recommended
 //#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
@@ -1771,6 +1784,7 @@
  * these options to restore the prior leveling state or to always enable
  * leveling immediately after G28.
  */
+//SETTING
 //#define RESTORE_LEVELING_AFTER_G28
 //#define ENABLE_LEVELING_AFTER_G28
 
@@ -1829,6 +1843,7 @@
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
+  //SETTING
   #define GRID_MAX_POINTS_X 3
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
@@ -1893,6 +1908,7 @@
  * Add a bed leveling sub-menu for ABL or MBL.
  * Include a guided procedure if manual probing is enabled.
  */
+//SETTING
 //#define LCD_BED_LEVELING
 
 #if ENABLED(LCD_BED_LEVELING)
@@ -1902,6 +1918,7 @@
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
+//SETTING
 //#define LCD_BED_TRAMMING
 
 #if ENABLED(LCD_BED_TRAMMING)
@@ -1963,6 +1980,7 @@
  * - Allows Z homing only when XY positions are known and trusted.
  * - If stepper drivers sleep, XY homing may be required again before Z homing.
  */
+//SETTING
 //#define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
@@ -2048,7 +2066,8 @@
  *   M501 - Read settings from EEPROM. (i.e., Throw away unsaved changes)
  *   M502 - Revert settings to "factory" defaults. (Follow with M500 to init the EEPROM.)
  */
-//#define EEPROM_SETTINGS     // Persistent storage with M500 and M501
+//SETTING
+//#define EEPROM_SETTINGS //enable    // Persistent storage with M500 and M501
 //#define DISABLE_M503        // Saves ~2700 bytes of flash. Disable for release!
 #define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save PROGMEM.
 #define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
@@ -2082,6 +2101,7 @@
 //
 // Preheat Constants - Up to 6 are supported without changes
 //
+//SETTING
 #define PREHEAT_1_LABEL       "PLA"
 #define PREHEAT_1_TEMP_HOTEND 180
 #define PREHEAT_1_TEMP_BED     70
@@ -2093,6 +2113,12 @@
 #define PREHEAT_2_TEMP_BED    110
 #define PREHEAT_2_TEMP_CHAMBER 35
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
+
+#define PREHEAT_3_LABEL       "HAMADA"
+#define PREHEAT_3_TEMP_HOTEND 140
+#define PREHEAT_3_TEMP_BED    90
+#define PREHEAT_3_TEMP_CHAMBER 35
+#define PREHEAT_3_FAN_SPEED     0 // Value from 0 to 255
 
 /**
  * Nozzle Park
@@ -2425,6 +2451,7 @@
 //
 // Note: Usually sold with a white PCB.
 //
+//SETTING
 //#define REPRAP_DISCOUNT_SMART_CONTROLLER
 
 //
@@ -2569,7 +2596,6 @@
 //=======================   LCD / Controller Selection  =======================
 //=========================      (Graphical LCDs)      ========================
 //=============================================================================
-//SETTING
 //
 // CONTROLLER TYPE: Graphical 128x64 (DOGM)
 //
@@ -2962,7 +2988,7 @@
   //#define TFT_RES_480x320
   //#define TFT_RES_1024x600
 #endif
-
+//SETTING
 /**
  * TFT UI - User Interface Selection. Enable one of the following options:
  *
